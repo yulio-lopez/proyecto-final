@@ -23,6 +23,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "disparar",
+                    "type": "Button",
+                    "id": "35c0ff1a-2112-49fe-850f-dc9118d54bbc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "recargar",
+                    "type": "Button",
+                    "id": "fe53695e-ba76-43d9-ad19-05b4b8e1eb2e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -67,6 +85,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "saltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3df5bb79-dfc8-473d-bde4-9e5561698762",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d0f5932-9f5e-44e8-bcb6-a8d6ca06e27c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "recargar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
