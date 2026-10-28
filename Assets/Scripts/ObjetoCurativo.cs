@@ -9,8 +9,12 @@ public class ObjetoCurativo : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             VidaJugador vidaJugador = collision.GetComponent<VidaJugador>();
-            vidaJugador.curarDano(cura);
-            Destroy(this.gameObject);
+
+            if (vidaJugador != null && vidaJugador.vidaActual < vidaJugador.vidaMaxima)
+            {
+                vidaJugador.curarDano(cura);    
+                Destroy(this.gameObject);
+            }
         }
     }
 }
