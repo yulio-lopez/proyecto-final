@@ -1,0 +1,117 @@
+{
+    "version": 1,
+    "name": "Jugador",
+    "maps": [
+        {
+            "name": "Humano",
+            "id": "95081a14-6a7b-4a84-afd1-9b2716d8effa",
+            "actions": [
+                {
+                    "name": "mover",
+                    "type": "Value",
+                    "id": "4cf10508-da10-44c7-a43d-9f5bd15ecd29",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "saltar",
+                    "type": "Button",
+                    "id": "2c6f6b50-47dc-416b-92a1-ba057f374f4a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "disparar",
+                    "type": "Button",
+                    "id": "35c0ff1a-2112-49fe-850f-dc9118d54bbc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "recargar",
+                    "type": "Button",
+                    "id": "fe53695e-ba76-43d9-ad19-05b4b8e1eb2e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "4a9be457-6663-4933-9055-b7c8283adfe1",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "mover",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ae55bf39-c5a4-48a8-a02e-5ddc6153c2eb",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "879fb110-6737-483a-8d65-081b517c98ee",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "mover",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "72e74a01-6138-4560-b26e-20c6bd576bd1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "saltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3df5bb79-dfc8-473d-bde4-9e5561698762",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d0f5932-9f5e-44e8-bcb6-a8d6ca06e27c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "recargar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
