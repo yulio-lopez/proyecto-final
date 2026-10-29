@@ -1170,6 +1170,7 @@ MonoBehaviour:
   balaPrefab: {fileID: 3388674814914591416, guid: bbbe1187f40750244b93d5045fb334bb, type: 3}
   balaLlena: {fileID: 6215886190944014621, guid: addbeeb9a3d7ffb4a96d4bac1789175f, type: 3}
   balaVacia: {fileID: -8332722708967532228, guid: a3f8ac26cbf60a74d9fae39b446f6088, type: 3}
+  animator: {fileID: 1145599725}
 --- !u!1 &1018342986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,9 +1436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7ff597b35ac0a4d98291d61d8fb75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimientoJugador
-  velocidadMaxima: 5
-  aceleracion: 25
-  desaceleracion: 30
+  velocidadMaxima: 6
+  aceleracion: 30
+  desaceleracion: 35
   alturaSalto: 2
   groundCheck: {fileID: 428232830}
   radioGroundCheck: 0.15
@@ -1676,7 +1677,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 5f9306258ec11ba41a78ba09117e181e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 93901028c62c34ddcb682041ff02f37a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

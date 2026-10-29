@@ -16,7 +16,7 @@ public class Pistola : MonoBehaviour
     public Image balaPrefab;
     public Sprite balaLlena;
     public Sprite balaVacia;
-
+    public Animator animator;
     private int balasActuales;
     private float contador;
     private InputAction dispararAccion;
@@ -99,5 +99,10 @@ public class Pistola : MonoBehaviour
         GameObject nuevoProyectil = Instantiate(proyectil, this.transform.position, this.transform.rotation);
         Bala movProyectil = nuevoProyectil.GetComponent<Bala>();
         movProyectil.establecerDireccion(mover.direccionMirada);
+
+        if (animator != null)
+        {
+            animator.SetTrigger("disparar");
+        }
     }
 }
