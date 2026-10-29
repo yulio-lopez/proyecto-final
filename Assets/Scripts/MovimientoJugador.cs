@@ -1,56 +1,37 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovimientoJugador : MonoBehaviour
 {
     [Header("Movimiento")]
-
-    [Tooltip("Velocidad máxima horizontal del personaje.")]
-    [SerializeField]
-    private float velocidadMaxima = 5f;
-
-    [Tooltip("Qué tan rápido alcanza la velocidad máxima.")]
-    [SerializeField]
-    private float aceleracion = 25f;
-
-    [Tooltip("Qué tan rápido se detiene.")]
-    [SerializeField]
-    private float desaceleracion = 30f;
-
+    [SerializeField] private float velocidadMaxima = 5f;
+    [SerializeField] private float aceleracion = 25f;
+    [SerializeField] private float desaceleracion = 30f;
 
     [Header("Salto")]
+    [SerializeField] private float alturaSalto = 2f;
+    [SerializeField] private float tiempoCoyote = 0.15f;
+    [SerializeField] private float tiempoBufferSalto = 0.15f;
 
-    [Tooltip("Altura aproximada del salto.")]
-    [SerializeField]
-    private float alturaSalto = 2f;
-    private int saltosRestantes;
-
+    private int saltosRestantes = 2;
+    private float tiempoDesdeSuelo;
+    private float tiempoDesdePulsacionSalto;
+    private bool saltoInicialRealizado;
 
     [Header("Suelo")]
-
-    [Tooltip("Objeto ubicado bajo los pies del personaje.")]
-    [SerializeField]
-    private Transform groundCheck;
-
-    [Tooltip("Radio utilizado para detectar el suelo.")]
-    [SerializeField]
-    private float radioGroundCheck = 0.15f;
-
-    [Tooltip("Layers consideradas como suelo.")]
-    [SerializeField]
-    private LayerMask capaSuelo;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float radioGroundCheck = 0.15f;
+    [SerializeField] private LayerMask capaSuelo;
 
     private Rigidbody2D rb;
     private PlayerInput playerInput;
-
     private InputAction moverAccion;
     private InputAction saltarAccion;
 
     private float inputMovimiento;
-
-    private bool saltoSolicitado;
-
     private bool enSuelo;
+    private bool estabaEnSuelo;
 
     public GameObject renderJugador;
     public Transform puntoDisparo;
@@ -58,9 +39,7 @@ public class MovimientoJugador : MonoBehaviour
     private float posicionDisparo;
 
     public Animator anim;
-
     public AudioSource pasos;
-
 
     [Header("Dash")]
     public float velocidadDash = 20f;
@@ -68,42 +47,42 @@ public class MovimientoJugador : MonoBehaviour
     public float tiempoEsperaDash = 1f;
 
     private InputAction dashAccion;
-    private bool haciendoDash = false;
+    private bool haciendoDash;
     private float tiempoDash;
     private float siguienteDash;
 
-
     [Header("Salto de pared")]
-
     [SerializeField] private LayerMask capaPared;
     [SerializeField] private float distanciaPared = 0.8f;
     [SerializeField] private float fuerzaSaltoPared = 7f;
     [SerializeField] private float impulsoHorizontalPared = 7f;
     [SerializeField] private float velocidadDeslizamiento = 2f;
+
     private bool tocandoPared;
     private int direccionPared;
 
     private void Start()
     {
-
-        if (PlayerPrefs.HasKey("posX") && PlayerPrefs.HasKey("posY"))
+        if (AdministradorCheckPoint.instancia != null &&
+            AdministradorCheckPoint.instancia.ExisteCheckpoint())
         {
-            Vector3 posInicio = new Vector3(PlayerPrefs.GetFloat("posX"), PlayerPrefs.GetFloat("posY"), 0);
-            this.transform.position = posInicio;
+            string escenaGuardada =
+                PlayerPrefs.GetString("escenaCheckpoint", "");
+
+            if (escenaGuardada == UnityEngine.SceneManagement.SceneManager
+                .GetActiveScene().name)
+            {
+                transform.position =
+                    AdministradorCheckPoint.instancia.ObtenerCheckpoint();
+            }
         }
-
-
-
 
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
 
         moverAccion = playerInput.actions.FindAction("Humano/mover", true);
-
         saltarAccion = playerInput.actions.FindAction("Humano/saltar", true);
-
         dashAccion = playerInput.actions.FindAction("Humano/dash", true);
-
     }
 
     private void Update()
@@ -112,21 +91,21 @@ public class MovimientoJugador : MonoBehaviour
 
         if (saltarAccion.WasPressedThisFrame())
         {
-            saltoSolicitado = true;
+            tiempoDesdePulsacionSalto = tiempoBufferSalto;
         }
 
         if (inputMovimiento > 0)
         {
-            //derecha
             cambiarDireccion(1);
         }
         else if (inputMovimiento < 0)
         {
-            //izquierda
             cambiarDireccion(-1);
         }
 
-        if (dashAccion.WasPressedThisFrame() && !haciendoDash && Time.time >= siguienteDash)
+        if (dashAccion.WasPressedThisFrame()
+            && !haciendoDash
+            && Time.time >= siguienteDash)
         {
             haciendoDash = true;
             tiempoDash = duracionDash;
@@ -137,26 +116,57 @@ public class MovimientoJugador : MonoBehaviour
     private void cambiarDireccion(float direccion)
     {
         direccionMirada = direccion;
+
         if (direccionMirada > 0)
         {
             renderJugador.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (direccionMirada < 0)
+        else
         {
             renderJugador.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+
         Vector3 posicion = puntoDisparo.localPosition;
         posicion.x = posicionDisparo * direccion;
         puntoDisparo.localPosition = posicion;
-
     }
-
-
 
     private void FixedUpdate()
     {
+        estabaEnSuelo = enSuelo;
+
         comprobarSuelo();
         comprobarPared();
+
+        // Reiniciar los saltos únicamente al aterrizar.
+        if (enSuelo && !estabaEnSuelo)
+        {
+            saltosRestantes = 2;
+            saltoInicialRealizado = false;
+        }
+
+        // Coyote time.
+        if (enSuelo)
+        {
+            tiempoDesdeSuelo = tiempoCoyote;
+        }
+        else
+        {
+            tiempoDesdeSuelo -= Time.fixedDeltaTime;
+        }
+
+        // Si termina el coyote time sin haber saltado,
+        // se consume el salto inicial.
+        if (!enSuelo
+            && tiempoDesdeSuelo <= 0f
+            && !saltoInicialRealizado)
+        {
+            saltoInicialRealizado = true;
+            saltosRestantes = 1;
+        }
+
+        // Jump buffering.
+        tiempoDesdePulsacionSalto -= Time.fixedDeltaTime;
 
         if (haciendoDash)
         {
@@ -176,24 +186,19 @@ public class MovimientoJugador : MonoBehaviour
         }
 
         aplicarMovimiento();
-
         deslizarPared();
-
         procesarSalto();
 
         actualizarAnimacionCaminar();
         actualizarSonidoPasos();
     }
 
-
     private void aplicarMovimiento()
     {
-        // Si estamos en el aire y tocamos una pared,
-        // evitamos empujar al personaje contra ella.
         if (tocandoPared && !enSuelo)
         {
-            if ((direccionPared == 1 && inputMovimiento > 0) ||
-                (direccionPared == -1 && inputMovimiento < 0))
+            if ((direccionPared == 1 && inputMovimiento > 0)
+                || (direccionPared == -1 && inputMovimiento < 0))
             {
                 rb.linearVelocity = new Vector2(
                     0f,
@@ -205,16 +210,13 @@ public class MovimientoJugador : MonoBehaviour
         }
 
         float velocidadDeseada = inputMovimiento * velocidadMaxima;
-
         float velocidadActual = rb.linearVelocity.x;
         float diferenciaVelocidad = velocidadDeseada - velocidadActual;
 
-        float aceleracionDisponible;
-
-        if (Mathf.Abs(inputMovimiento) > 0.01f)
-            aceleracionDisponible = aceleracion;
-        else
-            aceleracionDisponible = desaceleracion;
+        float aceleracionDisponible =
+            Mathf.Abs(inputMovimiento) > 0.01f
+            ? aceleracion
+            : desaceleracion;
 
         float aceleracionNecesaria =
             diferenciaVelocidad / Time.fixedDeltaTime;
@@ -231,14 +233,15 @@ public class MovimientoJugador : MonoBehaviour
         );
     }
 
-
     private void comprobarSuelo()
     {
-        Collider2D suelo = Physics2D.OverlapCircle(groundCheck.position, radioGroundCheck, capaSuelo);
+        Collider2D suelo = Physics2D.OverlapCircle(
+            groundCheck.position,
+            radioGroundCheck,
+            capaSuelo
+        );
 
         enSuelo = suelo != null;
-
-        Debug.Log("En suelo: " + enSuelo);
     }
 
     private void comprobarPared()
@@ -257,8 +260,8 @@ public class MovimientoJugador : MonoBehaviour
             capaPared
         );
 
-        tocandoPared = derecha.collider != null ||
-                       izquierda.collider != null;
+        tocandoPared = derecha.collider != null
+            || izquierda.collider != null;
 
         if (derecha.collider != null)
         {
@@ -269,8 +272,6 @@ public class MovimientoJugador : MonoBehaviour
             direccionPared = -1;
         }
     }
-
-
 
     private void deslizarPared()
     {
@@ -286,106 +287,109 @@ public class MovimientoJugador : MonoBehaviour
         }
     }
 
-
     private void procesarSalto()
     {
-        if (enSuelo)
+        if (tiempoDesdePulsacionSalto <= 0f)
+            return;
+
+        // Salto normal o coyote time.
+        if (!saltoInicialRealizado
+            && (enSuelo || tiempoDesdeSuelo > 0f))
         {
-            saltosRestantes = 2;
-        }
+            saltar();
 
-        if (saltoSolicitado)
+            saltoInicialRealizado = true;
+            saltosRestantes = 1;
+
+            tiempoDesdeSuelo = 0f;
+            tiempoDesdePulsacionSalto = 0f;
+        }
+        // Salto de pared.
+        else if (!enSuelo && tocandoPared)
         {
-            if (enSuelo)
-            {
-                saltar();
-                saltosRestantes = 1;
-            }
-            else if (tocandoPared)
-            {
-                rb.linearVelocity = new Vector2(
-                    -direccionPared * impulsoHorizontalPared,
-                    fuerzaSaltoPared
-                );
+            rb.linearVelocity = new Vector2(
+                -direccionPared * impulsoHorizontalPared,
+                fuerzaSaltoPared
+            );
 
-                saltosRestantes = 1;
-            }
-            else if (saltosRestantes > 0)
-            {
-                saltar();
-                saltosRestantes--;
-            }
+            saltoInicialRealizado = true;
+            saltosRestantes = 1;
+
+            tiempoDesdeSuelo = 0f;
+            tiempoDesdePulsacionSalto = 0f;
         }
+        // Doble salto.
+        else if (!enSuelo && saltosRestantes > 0)
+        {
+            saltar();
 
-        saltoSolicitado = false;
+            saltosRestantes--;
+            tiempoDesdePulsacionSalto = 0f;
+        }
     }
-
 
     private void saltar()
     {
         if (rb.linearVelocity.y < 0f)
         {
             Vector2 velocidad = rb.linearVelocity;
-
             velocidad.y = 0f;
-
             rb.linearVelocity = velocidad;
         }
 
         float gravedadEfectiva = Physics2D.gravity.y * rb.gravityScale;
 
-
-        float velocidadSalto = Mathf.Sqrt(alturaSalto * -2f * gravedadEfectiva);
+        float velocidadSalto = Mathf.Sqrt(
+            alturaSalto * -2f * gravedadEfectiva
+        );
 
         float impulso = rb.mass * velocidadSalto;
 
-        rb.AddForce(Vector2.up * impulso, ForceMode2D.Impulse);
+        rb.AddForce(
+            Vector2.up * impulso,
+            ForceMode2D.Impulse
+        );
     }
 
     private void OnDrawGizmosSelected()
     {
         if (groundCheck == null)
-        {
             return;
-        }
 
-
-        Gizmos.DrawWireSphere(groundCheck.position, radioGroundCheck);
+        Gizmos.DrawWireSphere(
+            groundCheck.position,
+            radioGroundCheck
+        );
     }
 
     private void actualizarAnimacionCaminar()
     {
         bool saltando = !enSuelo;
-
         anim.SetBool("saltando", saltando);
 
         if (enSuelo)
         {
-            anim.SetInteger("caminar", Mathf.Abs(rb.linearVelocity.x) > 0.1f ? 1 : 0);
+            anim.SetInteger(
+                "caminar",
+                Mathf.Abs(rb.linearVelocity.x) > 0.1f ? 1 : 0
+            );
         }
-
     }
-
 
     private void actualizarSonidoPasos()
     {
-        bool estaCaminando = Mathf.Abs(rb.linearVelocity.x) > 0;
-
+        bool estaCaminando = enSuelo
+            && Mathf.Abs(rb.linearVelocity.x) > 0.1f;
 
         if (estaCaminando)
         {
             if (!pasos.isPlaying)
-            {
                 pasos.Play();
-            }
         }
         else
         {
             if (pasos.isPlaying)
-            {
                 pasos.Stop();
-            }
         }
-
     }
 }

@@ -27,6 +27,8 @@ public class DetectarDanio : MonoBehaviour
             if (vidaJugador != null)
             {
                 vidaJugador.recibirDano(enemigo.dano);
+
+                vidaJugador.AplicarRetroceso(collider.transform.position);
             }
         }
 
@@ -49,55 +51,8 @@ public class DetectarDanio : MonoBehaviour
             if (vidaJugador != null)
             {
                 vidaJugador.recibirDano(enemigo.dano);
+                vidaJugador.AplicarRetroceso(collision.transform.position);
             }
         }
     }
-    //ZonaDanina znDanina = collision.GetComponent<ZonaDanina>();
-    //if (znDanina != null)
-    //{
-    //    siguienteDano = Time.time + znDanina.intervaloDano;
-
-    //}
-
-    //ZonaToxica znToxica = collision.GetComponent<ZonaToxica>();
-    //if (znToxica != null)
-    //{
-    //    siguienteDano = Time.time + znToxica.intervaloDano;
-
-    //}
-    //}
-
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    ZonaDanina znDanina = collision.GetComponent<ZonaDanina>();
-    //    if (znDanina != null)
-    //    {
-    //        if (Time.time >= siguienteDano)
-    //        {
-    //            vdJugador.recibirDano(znDanina.dano);
-    //            siguienteDano = Time.time + znDanina.intervaloDano;
-    //        }
-    //    }
-
-    //    ZonaToxica znToxica = collision.GetComponent<ZonaToxica>();
-    //    if (znToxica != null)
-    //    {
-    //        if (Time.time >= siguienteDano)
-    //        {
-    //            vdJugador.recibirDano(znToxica.dano);
-    //            siguienteDano = Time.time + znToxica.intervaloDano;
-    //            znToxica.dano++;
-    //        }
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    ZonaToxica znToxica = collision.GetComponent<ZonaToxica>();
-    //    if (znToxica != null)
-    //    {
-    //        znToxica.dano = 1;
-
-    //    }
-    //}
 }
