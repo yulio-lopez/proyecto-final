@@ -23,6 +23,7 @@ public class MovimientoJugador : MonoBehaviour
     [Tooltip("Altura aproximada del salto.")]
     [SerializeField]
     private float alturaSalto = 2f;
+    private int saltosRestantes;
 
 
     [Header("Suelo")]
@@ -60,6 +61,28 @@ public class MovimientoJugador : MonoBehaviour
 
     public AudioSource pasos;
 
+
+    [Header("Dash")]
+    public float velocidadDash = 20f;
+    public float duracionDash = 0.15f;
+    public float tiempoEsperaDash = 1f;
+
+    private InputAction dashAccion;
+    private bool haciendoDash = false;
+    private float tiempoDash;
+    private float siguienteDash;
+
+
+    [Header("Salto de pared")]
+
+    [SerializeField] private LayerMask capaPared;
+    [SerializeField] private float distanciaPared = 0.8f;
+    [SerializeField] private float fuerzaSaltoPared = 7f;
+    [SerializeField] private float impulsoHorizontalPared = 7f;
+    [SerializeField] private float velocidadDeslizamiento = 2f;
+    private bool tocandoPared;
+    private int direccionPared;
+
     private void Start()
     {
 
@@ -79,8 +102,7 @@ public class MovimientoJugador : MonoBehaviour
 
         saltarAccion = playerInput.actions.FindAction("Humano/saltar", true);
 
-        //Debug.Log("Mover: " + moverAccion);
-        //Debug.Log("Saltar: " + saltarAccion);
+        dashAccion = playerInput.actions.FindAction("Humano/dash", true);
 
     }
 
@@ -102,6 +124,13 @@ public class MovimientoJugador : MonoBehaviour
         {
             //izquierda
             cambiarDireccion(-1);
+        }
+
+        if (dashAccion.WasPressedThisFrame() && !haciendoDash && Time.time >= siguienteDash)
+        {
+            haciendoDash = true;
+            tiempoDash = duracionDash;
+            siguienteDash = Time.time + tiempoEsperaDash;
         }
     }
 
@@ -127,42 +156,81 @@ public class MovimientoJugador : MonoBehaviour
     private void FixedUpdate()
     {
         comprobarSuelo();
+        comprobarPared();
+
+        if (haciendoDash)
+        {
+            rb.linearVelocity = new Vector2(
+                direccionMirada * velocidadDash,
+                0f
+            );
+
+            tiempoDash -= Time.fixedDeltaTime;
+
+            if (tiempoDash <= 0f)
+            {
+                haciendoDash = false;
+            }
+
+            return;
+        }
 
         aplicarMovimiento();
+
+        deslizarPared();
 
         procesarSalto();
 
         actualizarAnimacionCaminar();
-
         actualizarSonidoPasos();
     }
 
+
     private void aplicarMovimiento()
     {
+        // Si estamos en el aire y tocamos una pared,
+        // evitamos empujar al personaje contra ella.
+        if (tocandoPared && !enSuelo)
+        {
+            if ((direccionPared == 1 && inputMovimiento > 0) ||
+                (direccionPared == -1 && inputMovimiento < 0))
+            {
+                rb.linearVelocity = new Vector2(
+                    0f,
+                    rb.linearVelocity.y
+                );
+
+                return;
+            }
+        }
+
         float velocidadDeseada = inputMovimiento * velocidadMaxima;
 
         float velocidadActual = rb.linearVelocity.x;
-
         float diferenciaVelocidad = velocidadDeseada - velocidadActual;
 
         float aceleracionDisponible;
 
-
         if (Mathf.Abs(inputMovimiento) > 0.01f)
-        {
             aceleracionDisponible = aceleracion;
-        }
         else
-        {
             aceleracionDisponible = desaceleracion;
-        }
 
-        float aceleracionNecesaria = diferenciaVelocidad / Time.fixedDeltaTime;
+        float aceleracionNecesaria =
+            diferenciaVelocidad / Time.fixedDeltaTime;
 
-        aceleracionNecesaria = Mathf.Clamp(aceleracionNecesaria, -aceleracionDisponible, aceleracionDisponible);
+        aceleracionNecesaria = Mathf.Clamp(
+            aceleracionNecesaria,
+            -aceleracionDisponible,
+            aceleracionDisponible
+        );
 
-        rb.AddForce(Vector2.right * aceleracionNecesaria, ForceMode2D.Force);
+        rb.AddForce(
+            Vector2.right * aceleracionNecesaria,
+            ForceMode2D.Force
+        );
     }
+
 
     private void comprobarSuelo()
     {
@@ -173,12 +241,80 @@ public class MovimientoJugador : MonoBehaviour
         Debug.Log("En suelo: " + enSuelo);
     }
 
+    private void comprobarPared()
+    {
+        RaycastHit2D derecha = Physics2D.Raycast(
+            transform.position,
+            Vector2.right,
+            distanciaPared,
+            capaPared
+        );
+
+        RaycastHit2D izquierda = Physics2D.Raycast(
+            transform.position,
+            Vector2.left,
+            distanciaPared,
+            capaPared
+        );
+
+        tocandoPared = derecha.collider != null ||
+                       izquierda.collider != null;
+
+        if (derecha.collider != null)
+        {
+            direccionPared = 1;
+        }
+        else if (izquierda.collider != null)
+        {
+            direccionPared = -1;
+        }
+    }
+
+
+
+    private void deslizarPared()
+    {
+        if (tocandoPared && !enSuelo && !haciendoDash)
+        {
+            if (rb.linearVelocity.y < -velocidadDeslizamiento)
+            {
+                rb.linearVelocity = new Vector2(
+                    rb.linearVelocity.x,
+                    -velocidadDeslizamiento
+                );
+            }
+        }
+    }
+
+
     private void procesarSalto()
     {
-
-        if (saltoSolicitado && enSuelo)
+        if (enSuelo)
         {
-            saltar();
+            saltosRestantes = 2;
+        }
+
+        if (saltoSolicitado)
+        {
+            if (enSuelo)
+            {
+                saltar();
+                saltosRestantes = 1;
+            }
+            else if (tocandoPared)
+            {
+                rb.linearVelocity = new Vector2(
+                    -direccionPared * impulsoHorizontalPared,
+                    fuerzaSaltoPared
+                );
+
+                saltosRestantes = 1;
+            }
+            else if (saltosRestantes > 0)
+            {
+                saltar();
+                saltosRestantes--;
+            }
         }
 
         saltoSolicitado = false;
@@ -199,8 +335,6 @@ public class MovimientoJugador : MonoBehaviour
         float gravedadEfectiva = Physics2D.gravity.y * rb.gravityScale;
 
 
-        // v = sqrt(-2gh)
-
         float velocidadSalto = Mathf.Sqrt(alturaSalto * -2f * gravedadEfectiva);
 
         float impulso = rb.mass * velocidadSalto;
@@ -216,28 +350,19 @@ public class MovimientoJugador : MonoBehaviour
         }
 
 
-        // Nos permite ver en Scene
-        // dónde está el detector del suelo.
-
         Gizmos.DrawWireSphere(groundCheck.position, radioGroundCheck);
     }
 
     private void actualizarAnimacionCaminar()
     {
-        // Comprobar si el personaje está en el aire
         bool saltando = !enSuelo;
 
-        // Actualizar la animación de salto
         anim.SetBool("saltando", saltando);
 
-        // Actualizar la animación de caminar
         if (enSuelo)
         {
             anim.SetInteger("caminar", Mathf.Abs(rb.linearVelocity.x) > 0.1f ? 1 : 0);
         }
-
-        //anim.SetInteger("caminar", (int)rb.linearVelocity.x);
-
 
     }
 
