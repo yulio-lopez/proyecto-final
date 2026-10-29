@@ -12,7 +12,8 @@ public class VidaJugador : MonoBehaviour
     public Image corazonPrefab;
     public Sprite corazonLleno;
     public Sprite corazonVacio;
-
+    private bool estaMuerto = false;
+    private Animator animator;
     private List<Image> corazones = new List<Image>();
 
     void Start()
@@ -20,6 +21,7 @@ public class VidaJugador : MonoBehaviour
         vidaActual = vidaMaxima;
         crearCorazones();
         actualizarCorazones();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void crearCorazones()
@@ -55,13 +57,23 @@ public class VidaJugador : MonoBehaviour
 
     public void morir()
     {
+        if (estaMuerto)
+            return;
         Debug.Log("Muere jugador");
-        this.gameObject.SetActive(false);
+
+        if (animator != null)
+        {
+            animator.SetTrigger("morir");
+            estaMuerto = true;
+        }
+        //this.gameObject.SetActive(false);
 
     }
 
     public void recibirDano(int dano)
     {
+        if (estaMuerto)
+            return;
         Debug.Log("Recibe daño jugador");
         vidaActual = Mathf.Max(0, vidaActual - dano);
 
