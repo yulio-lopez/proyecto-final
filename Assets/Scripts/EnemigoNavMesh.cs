@@ -6,8 +6,11 @@ public class EnemigoNavMesh : MonoBehaviour
     public Transform destinoA;
     public Transform destinoB;
     private NavMeshAgent agente;
+    private SpriteRenderer spriteRenderer;
     public VisionEnemigo visionEnemigo;
     private bool yendoAPuntoB = true;
+    private bool persiguiendoJugador;
+    private float alturaPersecucion;
     public float tiempoEspera = 2f;
     private float contador = 0f;
 
@@ -15,6 +18,7 @@ public class EnemigoNavMesh : MonoBehaviour
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         agente.updateRotation = false;
         agente.updateUpAxis = false;
         agente.SetDestination(destinoB.position);
@@ -23,13 +27,31 @@ public class EnemigoNavMesh : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (agente.velocity.x > 0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (agente.velocity.x < -0.1f)
+        {
+            spriteRenderer.flipX = false;
+        }
+
         if (visionEnemigo.posicionJugador != null)
         {
             contador = 0f;
-            agente.SetDestination(visionEnemigo.posicionJugador.position);
+            if (!persiguiendoJugador)
+            {
+                alturaPersecucion = transform.position.y;
+                persiguiendoJugador = true;
+            }
+
+            Vector3 destinoJugador = visionEnemigo.posicionJugador.position;
+            destinoJugador.y = alturaPersecucion;
+            agente.SetDestination(destinoJugador);
         }
         else
         {
+            persiguiendoJugador = false;
             contador += Time.deltaTime;
             if (contador >= tiempoEspera)
             {
