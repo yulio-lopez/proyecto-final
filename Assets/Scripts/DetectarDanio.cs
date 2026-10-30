@@ -33,10 +33,16 @@ public class DetectarDanio : MonoBehaviour
         }
 
         ObjetoDanio objDanio = collider.GetComponent<ObjetoDanio>();
+
         if (objDanio != null && CompareTag("Player"))
         {
-            VidaJugador vidaJUgador = GetComponent<VidaJugador>();
-            vidaJUgador.recibirDano(objDanio.dano);
+            VidaJugador vidaJugador = GetComponent<VidaJugador>();
+
+            if (vidaJugador != null)
+            {
+                vidaJugador.recibirDano(objDanio.dano);
+                vidaJugador.AplicarRetroceso(collider.transform.position);
+            }
         }
 
     }
@@ -51,6 +57,17 @@ public class DetectarDanio : MonoBehaviour
             if (vidaJugador != null)
             {
                 vidaJugador.recibirDano(enemigo.dano);
+                vidaJugador.AplicarRetroceso(collision.transform.position);
+            }
+        }
+        ObjetoDanio objDanio = collision.gameObject.GetComponent<ObjetoDanio>();
+        if (objDanio != null && CompareTag("Player"))
+        {
+            VidaJugador vidaJugador = GetComponent<VidaJugador>();
+
+            if (vidaJugador != null)
+            {
+                vidaJugador.recibirDano(objDanio.dano);
                 vidaJugador.AplicarRetroceso(collision.transform.position);
             }
         }

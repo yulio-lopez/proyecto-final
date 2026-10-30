@@ -27,6 +27,11 @@ public class VidaJugador : MonoBehaviour
     public float fuerzaRetrocesoY = 2f;
     public float tiempoRetroceso = 0.15f;
 
+    [Header("Invulnerabilidad")]
+    public float tiempoInvulnerable = 1f;
+
+    private bool esInvulnerable = false;
+
     private bool recibiendoRetroceso = false;
 
     void Start()
@@ -166,14 +171,30 @@ public class VidaJugador : MonoBehaviour
 
     public void recibirDano(int dano)
     {
-        if (estaMuerto)
+        if (estaMuerto || esInvulnerable)
             return;
 
         vidaActual = Mathf.Max(0, vidaActual - dano);
+
         actualizarCorazones();
 
         if (vidaActual <= 0)
+        {
             morir();
+        }
+        else
+        {
+            StartCoroutine(Invulnerabilidad());
+        }
+    }
+
+    private IEnumerator Invulnerabilidad()
+    {
+        esInvulnerable = true;
+
+        yield return new WaitForSeconds(tiempoInvulnerable);
+
+        esInvulnerable = false;
     }
 
     public void curarDano(int cura)
