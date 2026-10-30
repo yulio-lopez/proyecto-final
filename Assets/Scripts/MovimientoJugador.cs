@@ -311,6 +311,7 @@ public class MovimientoJugador : MonoBehaviour
                 -direccionPared * impulsoHorizontalPared,
                 fuerzaSaltoPared
             );
+            reproducirAnimacionSalto();
 
             saltoInicialRealizado = true;
             saltosRestantes = 1;
@@ -349,6 +350,13 @@ public class MovimientoJugador : MonoBehaviour
             Vector2.up * impulso,
             ForceMode2D.Impulse
         );
+
+        reproducirAnimacionSalto();
+    }
+
+    private void reproducirAnimacionSalto()
+    {
+        anim.Play("mapache_jump", 0, 0f);
     }
 
     private void OnDrawGizmosSelected()
@@ -364,7 +372,7 @@ public class MovimientoJugador : MonoBehaviour
 
     private void actualizarAnimacionCaminar()
     {
-        bool saltando = !enSuelo;
+        bool saltando = !enSuelo || rb.linearVelocity.y > 0.1f;
         anim.SetBool("saltando", saltando);
 
         if (enSuelo)

@@ -13,18 +13,23 @@ public class EnemigoNavMesh : MonoBehaviour
     private float alturaPersecucion;
     public float tiempoEspera = 2f;
     private float contador = 0f;
+    private Transform destinoPatrullaActual;
+    private Vector3 ultimaPosicionPatrulla;
+    private float tiempoSinAvance;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private const float DistanciaLlegadaPatrulla = 0.2f;
+    private const float TiempoMaximoAtascado = 1.5f;
+
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         agente.updateRotation = false;
         agente.updateUpAxis = false;
-        agente.SetDestination(destinoB.position);
+        ultimaPosicionPatrulla = transform.position;
+        EstablecerDestinoPatrulla(destinoB);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (agente.velocity.x > 0.1f)
@@ -43,6 +48,8 @@ public class EnemigoNavMesh : MonoBehaviour
             {
                 alturaPersecucion = transform.position.y;
                 persiguiendoJugador = true;
+                destinoPatrullaActual = null;
+                tiempoSinAvance = 0f;
             }
 
             Vector3 destinoJugador = visionEnemigo.posicionJugador.position;
@@ -51,38 +58,87 @@ public class EnemigoNavMesh : MonoBehaviour
         }
         else
         {
-            persiguiendoJugador = false;
+            if (persiguiendoJugador)
+            {
+                persiguiendoJugador = false;
+                destinoPatrullaActual = null;
+                tiempoSinAvance = 0f;
+            }
+
             contador += Time.deltaTime;
             if (contador >= tiempoEspera)
             {
-
                 Patrullar();
             }
         }
     }
 
-    void Patrullar()
+    private void Patrullar()
     {
-        // Si llegó al punto B
-        if (yendoAPuntoB && Vector2.Distance(transform.position, destinoB.position) < 0.2f)
+        Transform destino = yendoAPuntoB ? destinoB : destinoA;
+        if (destino == null)
+            return;
+
+        if (destinoPatrullaActual != destino)
         {
-            yendoAPuntoB = false;
+            EstablecerDestinoPatrulla(destino);
+            return;
         }
 
-        // Si llegó al punto A
-        if (!yendoAPuntoB && Vector2.Distance(transform.position, destinoA.position) < 0.2f)
+        if (agente.pathPending)
         {
-            yendoAPuntoB = true;
+            ultimaPosicionPatrulla = transform.position;
+            tiempoSinAvance = 0f;
+            return;
         }
 
-        // Elegir destino
-        if (yendoAPuntoB)
+        float toleranciaLlegada = Mathf.Max(
+            agente.stoppingDistance,
+            DistanciaLlegadaPatrulla
+        );
+        bool llegoAlDestino =
+            Vector2.Distance(transform.position, destino.position) <
+                DistanciaLlegadaPatrulla ||
+            (agente.hasPath &&
+             agente.remainingDistance <= toleranciaLlegada);
+
+        if (llegoAlDestino)
         {
-            agente.SetDestination(destinoB.position);
+            CambiarDestinoPatrulla();
+            return;
         }
-        else
+
+        float avance = Vector2.Distance(
+            transform.position,
+            ultimaPosicionPatrulla
+        );
+        ultimaPosicionPatrulla = transform.position;
+
+        if (avance > 0.01f)
         {
-            agente.SetDestination(destinoA.position);
+            tiempoSinAvance = 0f;
+            return;
         }
+
+        tiempoSinAvance += Time.deltaTime;
+        if (tiempoSinAvance >= TiempoMaximoAtascado)
+            CambiarDestinoPatrulla();
+    }
+
+    private void CambiarDestinoPatrulla()
+    {
+        yendoAPuntoB = !yendoAPuntoB;
+        EstablecerDestinoPatrulla(yendoAPuntoB ? destinoB : destinoA);
+    }
+
+    private void EstablecerDestinoPatrulla(Transform destino)
+    {
+        if (destino == null || !agente.isOnNavMesh)
+            return;
+
+        agente.SetDestination(destino.position);
+        destinoPatrullaActual = destino;
+        ultimaPosicionPatrulla = transform.position;
+        tiempoSinAvance = 0f;
     }
 }

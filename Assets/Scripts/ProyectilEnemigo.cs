@@ -25,7 +25,18 @@ public class ProyectilEnemigo : MonoBehaviour
         }
 
         disparado = true;
-        rb.linearVelocity = direccion.normalized * velocidad;
+        Vector2 direccionNormalizada = direccion.normalized;
+
+        if (direccionNormalizada.sqrMagnitude > 0f)
+        {
+            float angulo = Mathf.Atan2(
+                direccionNormalizada.y,
+                direccionNormalizada.x
+            ) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angulo);
+        }
+
+        rb.linearVelocity = direccionNormalizada * velocidad;
 
         Destroy(gameObject, tiempoVida);
     }
