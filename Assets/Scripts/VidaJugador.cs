@@ -21,6 +21,7 @@ public class VidaJugador : MonoBehaviour
 
     private MovimientoJugador movimiento;
     private Rigidbody2D rb;
+    private Collider2D colliderJugador;
 
     [Header("Retroceso al recibir daño")]
     public float fuerzaRetrocesoX = 5f;
@@ -44,6 +45,13 @@ public class VidaJugador : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         movimiento = GetComponent<MovimientoJugador>();
         rb = GetComponent<Rigidbody2D>();
+        colliderJugador = GetComponent<Collider2D>();
+    }
+
+    private void LateUpdate()
+    {
+        if (estaMuerto)
+            AlinearSpriteConSuelo(colliderJugador);
     }
 
     void crearCorazones()
@@ -124,6 +132,18 @@ public class VidaJugador : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
+        if (colliderJugador != null)
+        {
+            float tiempoInicioEsperaSuelo = Time.time;
+            while (!colliderJugador.IsTouchingLayers() &&
+                Time.time - tiempoInicioEsperaSuelo < 3f)
+            {
+                yield return null;
+            }
+        }
+
+        AlinearSpriteConSuelo(colliderJugador);
+
         // Si existe un checkpoint, recargar su escena.
         if (AdministradorCheckPoint.instancia != null &&
             AdministradorCheckPoint.instancia.ExisteCheckpoint())
@@ -138,6 +158,21 @@ public class VidaJugador : MonoBehaviour
                     .GetActiveScene().buildIndex
             );
         }
+    }
+
+    private void AlinearSpriteConSuelo(Collider2D collider)
+    {
+        if (collider == null || animator == null)
+            return;
+
+        SpriteRenderer spriteRenderer =
+            animator.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+            return;
+
+        Vector3 posicion = animator.transform.position;
+        posicion.y += collider.bounds.min.y - spriteRenderer.bounds.min.y;
+        animator.transform.position = posicion;
     }
 
     public void AplicarRetroceso(Vector2 posicionAtacante)
