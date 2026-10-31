@@ -128,7 +128,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.4
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212000000000000001, guid: 88c5d42b55b644959c8b7ab16dca4d13, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300000, guid: 54a9eee96227d441cbe5bae91f13e7a1, type: 3}
     - target: {fileID: 212000000000000001, guid: 88c5d42b55b644959c8b7ab16dca4d13, type: 3}
       propertyPath: m_WasSpriteAssigned

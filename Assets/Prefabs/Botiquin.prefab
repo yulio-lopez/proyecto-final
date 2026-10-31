@@ -183,4 +183,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76dc19e6ed111ee4c82b67e078ed9342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoCurativo
-  cura: 1
+  cura: 3
