@@ -1,0 +1,702 @@
+fileFormatVersion: 2
+guid: 14928af97ddda554290d47bda8e5777b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2385118530936256115
+    second: PARED CAFE_0
+  - first:
+      213: 5584282447857423053
+    second: PARED CAFE_1
+  - first:
+      213: -1277936540798000650
+    second: PARED CAFE_2
+  - first:
+      213: 5080941071001850139
+    second: PARED CAFE_3
+  - first:
+      213: -6779557570107296098
+    second: PARED CAFE_4
+  - first:
+      213: 2773515007637543326
+    second: PARED CAFE_5
+  - first:
+      213: 8471509022587711236
+    second: PARED CAFE_6
+  - first:
+      213: 4557958768806970217
+    second: PARED CAFE_7
+  - first:
+      213: 7085830647793926484
+    second: PARED CAFE_8
+  - first:
+      213: -8475993094319213290
+    second: PARED CAFE_9
+  - first:
+      213: -6583848555397733246
+    second: PARED CAFE_10
+  - first:
+      213: -3075965654585719930
+    second: PARED CAFE_11
+  - first:
+      213: 4712242379776278753
+    second: PARED CAFE_12
+  - first:
+      213: -4685497820094461209
+    second: PARED CAFE_13
+  - first:
+      213: -1727730768040831917
+    second: PARED CAFE_14
+  - first:
+      213: 1788756171804287293
+    second: PARED CAFE_15
+  - first:
+      213: 7075200320412059875
+    second: PARED CAFE_16
+  - first:
+      213: -1450684311056957880
+    second: PARED CAFE_17
+  - first:
+      213: -7709643547963292544
+    second: PARED CAFE_18
+  - first:
+      213: 2631476824097821944
+    second: PARED CAFE_19
+  - first:
+      213: 2577360562111494529
+    second: PARED CAFE_20
+  - first:
+      213: -9202103355235592493
+    second: PARED CAFE_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PARED CAFE_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 21
+        width: 829
+        height: 1492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37638afbaa4a91120800000000000000
+      internalID: 2385118530936256115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1357
+        width: 197
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc29dfdac4b5f7d40800000000000000
+      internalID: 5584282447857423053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_2
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 1405
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f16e38ac7bd34ee0800000000000000
+      internalID: -1277936540798000650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_3
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1325
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1112cdebf0238640800000000000000
+      internalID: 5080941071001850139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_4
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1283
+        width: 35
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e96b1734f4c2ae1a0800000000000000
+      internalID: -6779557570107296098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_5
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 1279
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99537964318d7620800000000000000
+      internalID: 2773515007637543326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_6
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 1287
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f6bd27298d09570800000000000000
+      internalID: 8471509022587711236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_7
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 1193
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963cd93e95f114f30800000000000000
+      internalID: 4557958768806970217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_8
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 965
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 451455c8e6de55260800000000000000
+      internalID: 7085830647793926484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_9
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 817
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 615707e30393f5a80800000000000000
+      internalID: -8475993094319213290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_10
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 769
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 284ac802f9871a4a0800000000000000
+      internalID: -6583848555397733246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_11
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 705
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 683cd19c889ff45d0800000000000000
+      internalID: -3075965654585719930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_12
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 657
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e04b165a7f356140800000000000000
+      internalID: 4712242379776278753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_13
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 545
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ea0765be84c9feb0800000000000000
+      internalID: -4685497820094461209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_14
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 535
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 354d967350ed508e0800000000000000
+      internalID: -1727730768040831917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_15
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 498
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d31ae22d240f2d810800000000000000
+      internalID: 1788756171804287293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_16
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 377
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e804e49439203260800000000000000
+      internalID: 7075200320412059875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_17
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 321
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84eb73e1e422edbe0800000000000000
+      internalID: -1450684311056957880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_18
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 327
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08404c26a08d10590800000000000000
+      internalID: -7709643547963292544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_19
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 305
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f41607ba32e48420800000000000000
+      internalID: 2631476824097821944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_20
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 265
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 189b1ca96cf94c320800000000000000
+      internalID: 2577360562111494529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PARED CAFE_21
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 151
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d690c4d0cf8b4080800000000000000
+      internalID: -9202103355235592493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PARED CAFE_0: 2385118530936256115
+      PARED CAFE_1: 5584282447857423053
+      PARED CAFE_10: -6583848555397733246
+      PARED CAFE_11: -3075965654585719930
+      PARED CAFE_12: 4712242379776278753
+      PARED CAFE_13: -4685497820094461209
+      PARED CAFE_14: -1727730768040831917
+      PARED CAFE_15: 1788756171804287293
+      PARED CAFE_16: 7075200320412059875
+      PARED CAFE_17: -1450684311056957880
+      PARED CAFE_18: -7709643547963292544
+      PARED CAFE_19: 2631476824097821944
+      PARED CAFE_2: -1277936540798000650
+      PARED CAFE_20: 2577360562111494529
+      PARED CAFE_21: -9202103355235592493
+      PARED CAFE_3: 5080941071001850139
+      PARED CAFE_4: -6779557570107296098
+      PARED CAFE_5: 2773515007637543326
+      PARED CAFE_6: 8471509022587711236
+      PARED CAFE_7: 4557958768806970217
+      PARED CAFE_8: 7085830647793926484
+      PARED CAFE_9: -8475993094319213290
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
