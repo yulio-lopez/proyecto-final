@@ -14,11 +14,8 @@ public class EnemigoNavMesh : MonoBehaviour
     public float tiempoEspera = 2f;
     private float contador = 0f;
     private Transform destinoPatrullaActual;
-    private Vector3 ultimaPosicionPatrulla;
-    private float tiempoSinAvance;
 
     private const float DistanciaLlegadaPatrulla = 0.2f;
-    private const float TiempoMaximoAtascado = 1.5f;
 
     void Start()
     {
@@ -26,7 +23,6 @@ public class EnemigoNavMesh : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         agente.updateRotation = false;
         agente.updateUpAxis = false;
-        ultimaPosicionPatrulla = transform.position;
         EstablecerDestinoPatrulla(destinoB);
     }
 
@@ -49,7 +45,6 @@ public class EnemigoNavMesh : MonoBehaviour
                 alturaPersecucion = transform.position.y;
                 persiguiendoJugador = true;
                 destinoPatrullaActual = null;
-                tiempoSinAvance = 0f;
             }
 
             Vector3 destinoJugador = visionEnemigo.posicionJugador.position;
@@ -62,7 +57,6 @@ public class EnemigoNavMesh : MonoBehaviour
             {
                 persiguiendoJugador = false;
                 destinoPatrullaActual = null;
-                tiempoSinAvance = 0f;
             }
 
             contador += Time.deltaTime;
@@ -86,11 +80,7 @@ public class EnemigoNavMesh : MonoBehaviour
         }
 
         if (agente.pathPending)
-        {
-            ultimaPosicionPatrulla = transform.position;
-            tiempoSinAvance = 0f;
             return;
-        }
 
         float toleranciaLlegada = Mathf.Max(
             agente.stoppingDistance,
@@ -100,28 +90,10 @@ public class EnemigoNavMesh : MonoBehaviour
             Vector2.Distance(transform.position, destino.position) <
                 DistanciaLlegadaPatrulla ||
             (agente.hasPath &&
+             agente.pathStatus == NavMeshPathStatus.PathComplete &&
              agente.remainingDistance <= toleranciaLlegada);
 
         if (llegoAlDestino)
-        {
-            CambiarDestinoPatrulla();
-            return;
-        }
-
-        float avance = Vector2.Distance(
-            transform.position,
-            ultimaPosicionPatrulla
-        );
-        ultimaPosicionPatrulla = transform.position;
-
-        if (avance > 0.01f)
-        {
-            tiempoSinAvance = 0f;
-            return;
-        }
-
-        tiempoSinAvance += Time.deltaTime;
-        if (tiempoSinAvance >= TiempoMaximoAtascado)
             CambiarDestinoPatrulla();
     }
 
@@ -138,7 +110,5 @@ public class EnemigoNavMesh : MonoBehaviour
 
         agente.SetDestination(destino.position);
         destinoPatrullaActual = destino;
-        ultimaPosicionPatrulla = transform.position;
-        tiempoSinAvance = 0f;
     }
 }

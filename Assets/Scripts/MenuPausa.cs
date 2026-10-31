@@ -48,6 +48,7 @@ public class MenuPausa : MonoBehaviour
         panelOpciones.SetActive(false);
 
         Time.timeScale = 0f;
+        MusicaPrincipal.Pausar();
     }
 
     public void Reanudar()
@@ -56,11 +57,13 @@ public class MenuPausa : MonoBehaviour
         panelPausa.SetActive(false);
 
         Time.timeScale = 1f;
+        MusicaPrincipal.Reanudar();
     }
 
     public void ReiniciarNivel()
     {
         Time.timeScale = 1f;
+        MusicaPrincipal.Reanudar();
 
         string escenaActual = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(escenaActual);
@@ -69,6 +72,7 @@ public class MenuPausa : MonoBehaviour
     public void IrMenuPrincipal()
     {
         Time.timeScale = 1f;
+        MusicaPrincipal.Reanudar();
 
         SceneManager.LoadScene("MenuPrincipal");
     }

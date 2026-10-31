@@ -1640,6 +1640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1076806253}
   - component: {fileID: 1076806252}
+  - component: {fileID: 2106000001}
   m_Layer: 0
   m_Name: ControladorMenu
   m_TagString: Untagged
@@ -1687,6 +1688,19 @@ MonoBehaviour:
   - cristal_020
   - cristal_021
   - cristal_022
+--- !u!114 &2106000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076806251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6aeb11986c4e48856b437c43b70e19, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::MusicaPrincipal
+  pista: {fileID: 8300000, guid: 0f0d579f74314fa98f1395ed8ea5931a, type: 3}
 --- !u!4 &1076806253
 Transform:
   m_ObjectHideFlags: 0

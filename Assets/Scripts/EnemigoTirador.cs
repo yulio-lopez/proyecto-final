@@ -29,11 +29,8 @@ public class EnemigoTirador : MonoBehaviour
     private float contadorEspera = 0f;
     private float contadorDisparo = 0f;
     private Transform destinoPatrullaActual;
-    private Vector3 ultimaPosicionPatrulla;
-    private float tiempoSinAvance;
 
     private const float DistanciaLlegadaPatrulla = 0.2f;
-    private const float TiempoMaximoAtascado = 1.5f;
 
     void Start()
     {
@@ -51,7 +48,6 @@ public class EnemigoTirador : MonoBehaviour
         agente.updateRotation = false;
         agente.updateUpAxis = false;
 
-        ultimaPosicionPatrulla = transform.position;
         EstablecerDestinoPatrulla(destinoB);
     }
 
@@ -90,7 +86,6 @@ public class EnemigoTirador : MonoBehaviour
         // El enemigo ve al jugador y se detiene.
         contadorEspera = 0f;
         destinoPatrullaActual = null;
-        tiempoSinAvance = 0f;
         agente.isStopped = true;
         agente.ResetPath();
 
@@ -174,11 +169,7 @@ public class EnemigoTirador : MonoBehaviour
         }
 
         if (agente.pathPending)
-        {
-            ultimaPosicionPatrulla = transform.position;
-            tiempoSinAvance = 0f;
             return;
-        }
 
         float toleranciaLlegada = Mathf.Max(
             agente.stoppingDistance,
@@ -188,28 +179,10 @@ public class EnemigoTirador : MonoBehaviour
             Vector2.Distance(transform.position, destino.position) <
                 DistanciaLlegadaPatrulla ||
             (agente.hasPath &&
+             agente.pathStatus == NavMeshPathStatus.PathComplete &&
              agente.remainingDistance <= toleranciaLlegada);
 
         if (llegoAlDestino)
-        {
-            CambiarDestinoPatrulla();
-            return;
-        }
-
-        float avance = Vector2.Distance(
-            transform.position,
-            ultimaPosicionPatrulla
-        );
-        ultimaPosicionPatrulla = transform.position;
-
-        if (avance > 0.01f)
-        {
-            tiempoSinAvance = 0f;
-            return;
-        }
-
-        tiempoSinAvance += Time.deltaTime;
-        if (tiempoSinAvance >= TiempoMaximoAtascado)
             CambiarDestinoPatrulla();
     }
 
@@ -227,7 +200,5 @@ public class EnemigoTirador : MonoBehaviour
         agente.isStopped = false;
         agente.SetDestination(destino.position);
         destinoPatrullaActual = destino;
-        ultimaPosicionPatrulla = transform.position;
-        tiempoSinAvance = 0f;
     }
 }
