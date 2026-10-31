@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc97fad1919c5a141913097b20482732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VidaEnemigo
-  vidaMaxima: 3
+  vidaMaxima: 1
   dano: 1
-  vidaActual: 3
+  vidaActual: 1
 --- !u!114 &8122231835899660905
 MonoBehaviour:
   m_ObjectHideFlags: 0
