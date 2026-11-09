@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: e6d0a1481941cc544b84273df585a5ee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2994545529810932064
+    second: Interruptor_0
+  - first:
+      213: -4644485068513921068
+    second: Interruptor_1
+  - first:
+      213: 2594000228277639411
+    second: Interruptor_2
+  - first:
+      213: -4587115823635184814
+    second: Interruptor_3
+  - first:
+      213: -2696240071805598991
+    second: Interruptor_4
+  - first:
+      213: -8107814578898160083
+    second: Interruptor_5
+  - first:
+      213: 4166184334896603262
+    second: Interruptor_6
+  - first:
+      213: -8179027932206411003
+    second: Interruptor_7
+  - first:
+      213: -5420274365870266527
+    second: Interruptor_8
+  - first:
+      213: 8993369333754049791
+    second: Interruptor_9
+  - first:
+      213: 2411353639032965927
+    second: Interruptor_10
+  - first:
+      213: 8321747409064397273
+    second: Interruptor_11
+  - first:
+      213: 110782914594343587
+    second: Interruptor_12
+  - first:
+      213: -9020207855861905974
+    second: Interruptor_13
+  - first:
+      213: 2111582904009755009
+    second: Interruptor_14
+  - first:
+      213: 8465540673734477172
+    second: Interruptor_15
+  - first:
+      213: 396502195936643674
+    second: Interruptor_16
+  - first:
+      213: -262461026341088623
+    second: Interruptor_17
+  - first:
+      213: 4896320743208303445
+    second: Interruptor_18
+  - first:
+      213: -1144488304399590151
+    second: Interruptor_19
+  - first:
+      213: -1337798373454987521
+    second: Interruptor_20
+  - first:
+      213: -1953201297763088119
+    second: Interruptor_21
+  - first:
+      213: 5217663731557978846
+    second: Interruptor_22
+  - first:
+      213: 6888733953563026282
+    second: Interruptor_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Interruptor_0
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 15
+        width: 711
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0615d182b43ce8920800000000000000
+      internalID: 2994545529810932064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_1
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 767
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d73f9e00797b8fb0800000000000000
+      internalID: -4644485068513921068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_2
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 421
+        width: 283
+        height: 501
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f855c9c67dbff320800000000000000
+      internalID: 2594000228277639411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 729
+        width: 15
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 253c6a4467a4750c0800000000000000
+      internalID: -4587115823635184814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_4
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 229
+        width: 379
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f28ad2a0f7059ad0800000000000000
+      internalID: -2696240071805598991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_5
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 373
+        width: 105
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26ba08f8914b7f80800000000000000
+      internalID: -8107814578898160083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_6
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 325
+        width: 85
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e702f46449241d930800000000000000
+      internalID: 4166184334896603262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 512
+        width: 83
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 503d6d41e614e7e80800000000000000
+      internalID: -8179027932206411003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_8
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 213
+        width: 41
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 167a52d9e2157c4b0800000000000000
+      internalID: -5420274365870266527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_9
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 238
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff43d4892cddecc70800000000000000
+      internalID: 8993369333754049791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_10
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 303
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72bc76adb59d67120800000000000000
+      internalID: 2411353639032965927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_11
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 593
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d98fc39d29cc7370800000000000000
+      internalID: 8321747409064397273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_12
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 367
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aa049f4974998100800000000000000
+      internalID: 110782914594343587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_13
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 575
+        width: 11
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac5c9270fb8c1d280800000000000000
+      internalID: -9020207855861905974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_14
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 575
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1890a4ba679dd4d10800000000000000
+      internalID: 2111582904009755009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_15
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 485
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4758091f364ab7570800000000000000
+      internalID: 8465540673734477172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_16
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 429
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a477d75a8a08500800000000000000
+      internalID: 396502195936643674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_17
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 65
+        width: 335
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1921e8d461d8b5cf0800000000000000
+      internalID: -262461026341088623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_18
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 583
+        width: 35
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55bbe4d26c933f340800000000000000
+      internalID: 4896320743208303445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_19
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 487
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fc5cae63f5fd10f0800000000000000
+      internalID: -1144488304399590151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_20
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 191
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffebe11a77f2f6de0800000000000000
+      internalID: -1337798373454987521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_21
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 135
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 909cff7a4c5d4e4e0800000000000000
+      internalID: -1953201297763088119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_22
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 177
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed2d3fcf48dd86840800000000000000
+      internalID: 5217663731557978846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interruptor_23
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 21
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a63eb4e5803b99f50800000000000000
+      internalID: 6888733953563026282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Interruptor_0: 2994545529810932064
+      Interruptor_1: -4644485068513921068
+      Interruptor_10: 2411353639032965927
+      Interruptor_11: 8321747409064397273
+      Interruptor_12: 110782914594343587
+      Interruptor_13: -9020207855861905974
+      Interruptor_14: 2111582904009755009
+      Interruptor_15: 8465540673734477172
+      Interruptor_16: 396502195936643674
+      Interruptor_17: -262461026341088623
+      Interruptor_18: 4896320743208303445
+      Interruptor_19: -1144488304399590151
+      Interruptor_2: 2594000228277639411
+      Interruptor_20: -1337798373454987521
+      Interruptor_21: -1953201297763088119
+      Interruptor_22: 5217663731557978846
+      Interruptor_23: 6888733953563026282
+      Interruptor_3: -4587115823635184814
+      Interruptor_4: -2696240071805598991
+      Interruptor_5: -8107814578898160083
+      Interruptor_6: 4166184334896603262
+      Interruptor_7: -8179027932206411003
+      Interruptor_8: -5420274365870266527
+      Interruptor_9: 8993369333754049791
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
